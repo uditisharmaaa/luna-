@@ -1,0 +1,7 @@
+requests
+pandas
+beautifulsoup4
+lxml
+python-dotenv
+tenacity
+urllib3<2.0,>=1.26

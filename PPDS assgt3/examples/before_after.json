@@ -1,0 +1,148 @@
+{
+  "artworks_before": [
+    {
+      "objectID": 438815,
+      "title": "Madame Georges Charpentier (Marguerite-Louise Lemonnier, 1848–1904) and Her Children, Georgette-Berthe (1872–1945) and Paul-Emile-Charles (1875–1895)",
+      "artist": "Auguste Renoir",
+      "culture": "",
+      "period": "",
+      "medium": "Oil on canvas",
+      "objectDate": "1878",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-35674-001.jpg"
+    },
+    {
+      "objectID": 436884,
+      "title": "The Chess Players",
+      "artist": "Liberale da Verona",
+      "culture": "",
+      "period": "",
+      "medium": "Tempera on wood",
+      "objectDate": "ca. 1475",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DT226950.jpg"
+    },
+    {
+      "objectID": 436885,
+      "title": "Scene from a Novella",
+      "artist": "Liberale da Verona",
+      "culture": "",
+      "period": "",
+      "medium": "Tempera on wood",
+      "objectDate": "",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DT8310.jpg"
+    }
+  ],
+  "artworks_after": [
+    {
+      "objectID": 438815,
+      "title": "Madame Georges Charpentier (Marguerite-Louise Lemonnier, 1848–1904) and Her Children, Georgette-Berthe (1872–1945) and Paul-Emile-Charles (1875–1895)",
+      "artist": "Auguste Renoir",
+      "culture": "",
+      "period": "",
+      "medium": "Oil on canvas",
+      "objectDate": "1878",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DP-35674-001.jpg",
+      "era_style": "Impressionism",
+      "summary": "Renoir's 1878 portrait of Madame Charpentier and her children, showcasing domestic elegance and Impressionist brushwork.",
+      "themes": "Family;Bourgeois Life;Maternal Affection",
+      "quality_flags": "",
+      "raw_quality_flags": "missing:culture;missing:period"
+    },
+    {
+      "objectID": 436884,
+      "title": "The Chess Players",
+      "artist": "Liberale da Verona",
+      "culture": "",
+      "period": "",
+      "medium": "Tempera on wood",
+      "objectDate": "ca. 1475",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DT226950.jpg",
+      "era_style": "Early Renaissance",
+      "summary": "A tempera painting from 1475 depicting figures engaged in a game of chess.",
+      "themes": "leisure;strategy;social interaction",
+      "quality_flags": "",
+      "raw_quality_flags": "missing:culture;missing:period"
+    },
+    {
+      "objectID": 436885,
+      "title": "Scene from a Novella",
+      "artist": "Liberale da Verona",
+      "culture": "",
+      "period": "",
+      "medium": "Tempera on wood",
+      "objectDate": "",
+      "department": "European Paintings",
+      "primaryImageSmall": "https://images.metmuseum.org/CRDImages/ep/web-large/DT8310.jpg",
+      "era_style": "Italian Renaissance",
+      "summary": "A tempera painting on wood by Liberale da Verona depicting a narrative scene from a novella.",
+      "themes": "Literature;Narrative;Renaissance Humanism",
+      "quality_flags": "",
+      "raw_quality_flags": "missing:culture;missing:period;missing:objectDate"
+    }
+  ],
+  "exhibitions_before": [
+    {
+      "title": "Man Ray: When Objects Dream - The Metropolitan Museum of Art",
+      "dates": "Through February 1, 2026",
+      "location": "The Met Fifth Avenue",
+      "description": "American artist Man Ray (1890–1976) was a visionary known for his radical experiments that pushed the limits of photography, painting, sculpture, and film.",
+      "url": "https://www.metmuseum.org/exhibitions/man-ray-when-objects-dream"
+    },
+    {
+      "title": "Superfine: Tailoring Black Style - The Metropolitan Museum of Art",
+      "dates": "",
+      "location": "The Met Fifth Avenue",
+      "description": "Superfine: Tailoring Black Style presents a cultural and historical examination of Black style over three hundred years through the concept of dandyism.",
+      "url": "https://www.metmuseum.org/exhibitions/superfine-tailoring-black-style"
+    },
+    {
+      "title": "The Roof Garden Commission: Jennie C. Jones, Ensemble - The Metropolitan Museum of Art",
+      "dates": "",
+      "location": "The Met Fifth Avenue",
+      "description": "For the 2025 Roof Garden Commission, Jennie C. Jones presents Ensemble, acoustic sculptures exploring sound, form, and the continuity of art history.",
+      "url": "https://www.metmuseum.org/exhibitions/the-roof-garden-commission-jennie-c-jones"
+    }
+  ],
+  "exhibitions_after": [
+    {
+      "title": "Man Ray: When Objects Dream - The Metropolitan Museum of Art",
+      "dates": "Through February 1, 2026",
+      "location": "The Met Fifth Avenue",
+      "description": "American artist Man Ray (1890–1976) was a visionary known for his radical experiments that pushed the limits of photography, painting, sculpture, and film.",
+      "url": "https://www.metmuseum.org/exhibitions/man-ray-when-objects-dream",
+      "audience_takeaway": "Visitors will explore Man Ray's boundary-pushing experiments across photography, painting, sculpture, and film, gaining insight into his surreal and innovative artistic vision.",
+      "buzz_summary": "A deep dive into Man Ray's radical, multi-medium experiments at The Met.",
+      "similarity_cluster": "Modernist photography, surrealism, avant-garde art exhibitions",
+      "data_flags": "long_run;major_museum;artist_retrospective",
+      "raw_quality_flags": ""
+    },
+    {
+      "title": "Superfine: Tailoring Black Style - The Metropolitan Museum of Art",
+      "dates": "",
+      "location": "The Met Fifth Avenue",
+      "description": "Superfine: Tailoring Black Style presents a cultural and historical examination of Black style over three hundred years through the concept of dandyism.",
+      "url": "https://www.metmuseum.org/exhibitions/superfine-tailoring-black-style",
+      "audience_takeaway": "Visitors will gain insight into the evolution of Black style and dandyism, exploring its cultural significance and historical impact over three centuries.",
+      "buzz_summary": "A deep dive into 300 years of Black dandyism and sartorial elegance at The Met.",
+      "similarity_cluster": "Fashion history, cultural identity, African American studies",
+      "data_flags": "missing_dates",
+      "raw_quality_flags": "missing:dates"
+    },
+    {
+      "title": "The Roof Garden Commission: Jennie C. Jones, Ensemble - The Metropolitan Museum of Art",
+      "dates": "",
+      "location": "The Met Fifth Avenue",
+      "description": "For the 2025 Roof Garden Commission, Jennie C. Jones presents Ensemble, acoustic sculptures exploring sound, form, and the continuity of art history.",
+      "url": "https://www.metmuseum.org/exhibitions/the-roof-garden-commission-jennie-c-jones",
+      "audience_takeaway": "Visitors will experience a unique fusion of sound and sculpture, reflecting on the evolution of art through interactive acoustic installations.",
+      "buzz_summary": "Jennie C. Jones' acoustic sculptures blend sound and art history on The Met's rooftop.",
+      "similarity_cluster": "Contemporary outdoor sculpture and sound art installations",
+      "data_flags": "dates_missing",
+      "raw_quality_flags": "missing:dates"
+    }
+  ]
+}
