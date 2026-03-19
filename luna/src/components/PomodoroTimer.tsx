@@ -20,6 +20,13 @@ export default function PomodoroTimer({ date, onSessionComplete }: PomodoroTimer
   const [sessionCount, setSessionCount] = useState(0)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  // Reset timer when settings change (if not running)
+  useEffect(() => {
+    if (!pomodoroActive) {
+      setPomodoroTimeLeft(pomodoroSettings.workMinutes * 60)
+    }
+  }, [pomodoroSettings.workMinutes])
+
   const totalTime = pomodoroMode === 'work'
     ? pomodoroSettings.workMinutes * 60
     : pomodoroSettings.breakMinutes * 60

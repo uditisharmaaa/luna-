@@ -9,6 +9,7 @@ interface TodoListProps {
 export default function TodoList({ date }: TodoListProps) {
   const [todos, setTodos] = useState<Todo[]>([])
   const [newText, setNewText] = useState('')
+  const [justCompleted, setJustCompleted] = useState<number | null>(null)
 
   const loadTodos = async () => {
     const data = await window.electronAPI.getTodos(date)
@@ -28,6 +29,11 @@ export default function TodoList({ date }: TodoListProps) {
 
   const handleToggle = async (todo: Todo) => {
     await window.electronAPI.updateTodo(todo.id, { completed: todo.completed ? 0 : 1 })
+    if (!todo.completed) {
+      // Was uncompleted, now completing — show celebration
+      setJustCompleted(todo.id)
+      setTimeout(() => setJustCompleted(null), 600)
+    }
     loadTodos()
   }
 
@@ -86,6 +92,9 @@ export default function TodoList({ date }: TodoListProps) {
             >
               {todo.text}
             </span>
+            {justCompleted === todo.id && (
+              <span className="animate-popIn text-[#C9B8E8] text-sm">✦</span>
+            )}
             <button
               onClick={() => handleDelete(todo.id)}
               className="opacity-0 group-hover:opacity-100 text-[#8B7D9B] hover:text-rose-400 text-xs transition-all"

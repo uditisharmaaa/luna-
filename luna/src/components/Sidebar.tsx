@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import SettingsModal from './SettingsModal'
 
 const navItems = [
   { path: '/', label: 'Today', icon: '○' },
@@ -8,7 +10,10 @@ const navItems = [
 ]
 
 export default function Sidebar() {
+  const [showSettings, setShowSettings] = useState(false)
+
   return (
+    <>
     <aside
       className="texture-paper flex flex-col h-full"
       style={{
@@ -71,11 +76,14 @@ export default function Sidebar() {
             e.currentTarget.style.background = ''
             e.currentTarget.style.color = '#8B7D9B'
           }}
+          onClick={() => setShowSettings(true)}
         >
           <span>⚙</span>
           <span>Settings</span>
         </button>
       </div>
     </aside>
+    {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
+    </>
   )
 }
