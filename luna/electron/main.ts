@@ -76,40 +76,52 @@ function createWindow() {
 // IPC Handlers
 // ---------------------------------------------------------------------------
 
+// Helper function to wrap IPC handlers with error handling
+function handleIPC<T>(handler: (...args: any[]) => T) {
+  return (_event: Electron.IpcMainInvokeEvent, ...args: any[]) => {
+    try {
+      return handler(...args)
+    } catch (error) {
+      console.error('[Luna DB Error]', error)
+      throw error
+    }
+  }
+}
+
 // Todos
-ipcMain.handle('get-todos', (_event, date: string) => getTodos(date))
-ipcMain.handle('add-todo', (_event, date: string, text: string) => addTodo(date, text))
-ipcMain.handle('update-todo', (_event, id: number, updates: { text?: string; completed?: number; order_index?: number }) => updateTodo(id, updates))
-ipcMain.handle('delete-todo', (_event, id: number) => deleteTodo(id))
+ipcMain.handle('get-todos', handleIPC((date: string) => getTodos(date)))
+ipcMain.handle('add-todo', handleIPC((date: string, text: string) => addTodo(date, text)))
+ipcMain.handle('update-todo', handleIPC((id: number, updates: { text?: string; completed?: number; order_index?: number }) => updateTodo(id, updates)))
+ipcMain.handle('delete-todo', handleIPC((id: number) => deleteTodo(id)))
 
 // Journal
-ipcMain.handle('get-journal-entry', (_event, date: string) => getJournalEntry(date))
-ipcMain.handle('upsert-journal-entry', (_event, date: string, content: string) => upsertJournalEntry(date, content))
+ipcMain.handle('get-journal-entry', handleIPC((date: string) => getJournalEntry(date)))
+ipcMain.handle('upsert-journal-entry', handleIPC((date: string, content: string) => upsertJournalEntry(date, content)))
 
 // Pomodoro
-ipcMain.handle('start-pomodoro', (_event, date: string, durationMinutes: number) => startPomodoro(date, durationMinutes))
-ipcMain.handle('complete-pomodoro', (_event, id: number) => completePomodoro(id))
-ipcMain.handle('get-pomodoro-count', (_event, date: string) => getPomodoroCount(date))
-ipcMain.handle('get-pomodoro-sessions', (_event, date: string) => getPomodoroSessions(date))
-ipcMain.handle('get-pomodoro-stats', () => getPomodoroStats())
+ipcMain.handle('start-pomodoro', handleIPC((date: string, durationMinutes: number) => startPomodoro(date, durationMinutes)))
+ipcMain.handle('complete-pomodoro', handleIPC((id: number) => completePomodoro(id)))
+ipcMain.handle('get-pomodoro-count', handleIPC((date: string) => getPomodoroCount(date)))
+ipcMain.handle('get-pomodoro-sessions', handleIPC((date: string) => getPomodoroSessions(date)))
+ipcMain.handle('get-pomodoro-stats', handleIPC(() => getPomodoroStats()))
 
 // Habits
-ipcMain.handle('get-habits', () => getHabits())
-ipcMain.handle('add-habit', (_event, name: string, icon: string) => addHabit(name, icon))
-ipcMain.handle('delete-habit', (_event, id: number) => deleteHabit(id))
-ipcMain.handle('toggle-habit-completion', (_event, habitId: number, date: string) => toggleHabitCompletion(habitId, date))
-ipcMain.handle('get-habit-completions', (_event, weekStart: string, weekEnd: string) => getHabitCompletions(weekStart, weekEnd))
-ipcMain.handle('get-habit-streak', (_event, habitId: number) => getHabitStreak(habitId))
+ipcMain.handle('get-habits', handleIPC(() => getHabits()))
+ipcMain.handle('add-habit', handleIPC((name: string, icon: string) => addHabit(name, icon)))
+ipcMain.handle('delete-habit', handleIPC((id: number) => deleteHabit(id)))
+ipcMain.handle('toggle-habit-completion', handleIPC((habitId: number, date: string) => toggleHabitCompletion(habitId, date)))
+ipcMain.handle('get-habit-completions', handleIPC((weekStart: string, weekEnd: string) => getHabitCompletions(weekStart, weekEnd)))
+ipcMain.handle('get-habit-streak', handleIPC((habitId: number) => getHabitStreak(habitId)))
 
 // Weekly Goals
-ipcMain.handle('get-weekly-goals', (_event, weekStart: string) => getWeeklyGoals(weekStart))
-ipcMain.handle('add-weekly-goal', (_event, weekStart: string, text: string) => addWeeklyGoal(weekStart, text))
-ipcMain.handle('update-weekly-goal', (_event, id: number, completed: number) => updateWeeklyGoal(id, completed))
-ipcMain.handle('delete-weekly-goal', (_event, id: number) => deleteWeeklyGoal(id))
+ipcMain.handle('get-weekly-goals', handleIPC((weekStart: string) => getWeeklyGoals(weekStart)))
+ipcMain.handle('add-weekly-goal', handleIPC((weekStart: string, text: string) => addWeeklyGoal(weekStart, text)))
+ipcMain.handle('update-weekly-goal', handleIPC((id: number, completed: number) => updateWeeklyGoal(id, completed)))
+ipcMain.handle('delete-weekly-goal', handleIPC((id: number) => deleteWeeklyGoal(id)))
 
 // Archive
-ipcMain.handle('get-archive-day-data', (_event, date: string) => getArchiveDayData(date))
-ipcMain.handle('get-archive-month-data', (_event, year: number, month: number) => getArchiveMonthData(year, month))
+ipcMain.handle('get-archive-day-data', handleIPC((date: string) => getArchiveDayData(date)))
+ipcMain.handle('get-archive-month-data', handleIPC((year: number, month: number) => getArchiveMonthData(year, month)))
 
 // ---------------------------------------------------------------------------
 // App lifecycle
