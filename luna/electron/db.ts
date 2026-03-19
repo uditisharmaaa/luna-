@@ -394,7 +394,7 @@ export function getArchiveDayData(date: string): ArchiveDayData {
     .get(date) as { total: number; done: number | null }
 
   const journalRow = db
-    .prepare('SELECT 1 FROM journal_entries WHERE date = ? AND content != ""')
+    .prepare("SELECT 1 FROM journal_entries WHERE date = ? AND content != ''")
     .get(date)
 
   return {
