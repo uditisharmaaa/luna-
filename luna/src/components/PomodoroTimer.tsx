@@ -41,10 +41,10 @@ export default function PomodoroTimer({ date, onSessionComplete }: PomodoroTimer
       return
     }
     intervalRef.current = setInterval(() => {
-      setPomodoroTimeLeft(pomodoroTimeLeft - 1)
+      setPomodoroTimeLeft((prev: number) => prev - 1)
     }, 1000)
     return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
-  }, [pomodoroActive, pomodoroTimeLeft, setPomodoroTimeLeft])
+  }, [pomodoroActive])
 
   // Handle timer completion
   useEffect(() => {

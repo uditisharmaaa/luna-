@@ -16,7 +16,7 @@ interface StoreState {
   setTodayDate: (date: string) => void
   setPomodoroActive: (active: boolean) => void
   setPomodoroSessionId: (id: number | null) => void
-  setPomodoroTimeLeft: (seconds: number) => void
+  setPomodoroTimeLeft: (seconds: number | ((prev: number) => number)) => void
   setPomodoroMode: (mode: 'work' | 'break') => void
   updatePomodoroSettings: (settings: Partial<StoreState['pomodoroSettings']>) => void
 }
@@ -34,7 +34,9 @@ export const useStore = create<StoreState>((set) => ({
   setTodayDate: (date) => set({ todayDate: date }),
   setPomodoroActive: (active) => set({ pomodoroActive: active }),
   setPomodoroSessionId: (id) => set({ pomodoroSessionId: id }),
-  setPomodoroTimeLeft: (seconds) => set({ pomodoroTimeLeft: seconds }),
+  setPomodoroTimeLeft: (seconds) => set((state) => ({
+    pomodoroTimeLeft: typeof seconds === 'function' ? seconds(state.pomodoroTimeLeft) : seconds,
+  })),
   setPomodoroMode: (mode) => set({ pomodoroMode: mode }),
   updatePomodoroSettings: (settings) =>
     set((state) => ({
