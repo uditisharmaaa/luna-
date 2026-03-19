@@ -5,15 +5,26 @@
   "asar": true,
   "productName": "Luna",
   "directories": {
-    "output": "release/${version}"
+    "buildResources": "build",
+    "output": "out"
   },
   "files": [
-    "dist",
-    "dist-electron"
+    "dist/**/*",
+    "dist-electron/**/*"
   ],
+  "npmRebuild": true,
+  "buildDependenciesFromSource": false,
   "mac": {
+    "category": "public.app-category.productivity",
     "target": [
-      "dmg"
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "zip",
+        "arch": ["x64", "arm64"]
+      }
     ],
     "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
   },
