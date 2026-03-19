@@ -1,7 +1,32 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import {
+  getTodos,
+  addTodo,
+  updateTodo,
+  deleteTodo,
+  getJournalEntry,
+  upsertJournalEntry,
+  startPomodoro,
+  completePomodoro,
+  getPomodoroCount,
+  getPomodoroSessions,
+  getPomodoroStats,
+  getHabits,
+  addHabit,
+  deleteHabit,
+  toggleHabitCompletion,
+  getHabitCompletions,
+  getHabitStreak,
+  getWeeklyGoals,
+  addWeeklyGoal,
+  updateWeeklyGoal,
+  deleteWeeklyGoal,
+  getArchiveDayData,
+  getArchiveMonthData,
+} from './db'
 
 const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -46,6 +71,49 @@ function createWindow() {
     win.loadFile(path.join(RENDERER_DIST, 'index.html'))
   }
 }
+
+// ---------------------------------------------------------------------------
+// IPC Handlers
+// ---------------------------------------------------------------------------
+
+// Todos
+ipcMain.handle('get-todos', (_event, date: string) => getTodos(date))
+ipcMain.handle('add-todo', (_event, date: string, text: string) => addTodo(date, text))
+ipcMain.handle('update-todo', (_event, id: number, updates: { text?: string; completed?: number; order_index?: number }) => updateTodo(id, updates))
+ipcMain.handle('delete-todo', (_event, id: number) => deleteTodo(id))
+
+// Journal
+ipcMain.handle('get-journal-entry', (_event, date: string) => getJournalEntry(date))
+ipcMain.handle('upsert-journal-entry', (_event, date: string, content: string) => upsertJournalEntry(date, content))
+
+// Pomodoro
+ipcMain.handle('start-pomodoro', (_event, date: string, durationMinutes: number) => startPomodoro(date, durationMinutes))
+ipcMain.handle('complete-pomodoro', (_event, id: number) => completePomodoro(id))
+ipcMain.handle('get-pomodoro-count', (_event, date: string) => getPomodoroCount(date))
+ipcMain.handle('get-pomodoro-sessions', (_event, date: string) => getPomodoroSessions(date))
+ipcMain.handle('get-pomodoro-stats', () => getPomodoroStats())
+
+// Habits
+ipcMain.handle('get-habits', () => getHabits())
+ipcMain.handle('add-habit', (_event, name: string, icon: string) => addHabit(name, icon))
+ipcMain.handle('delete-habit', (_event, id: number) => deleteHabit(id))
+ipcMain.handle('toggle-habit-completion', (_event, habitId: number, date: string) => toggleHabitCompletion(habitId, date))
+ipcMain.handle('get-habit-completions', (_event, weekStart: string, weekEnd: string) => getHabitCompletions(weekStart, weekEnd))
+ipcMain.handle('get-habit-streak', (_event, habitId: number) => getHabitStreak(habitId))
+
+// Weekly Goals
+ipcMain.handle('get-weekly-goals', (_event, weekStart: string) => getWeeklyGoals(weekStart))
+ipcMain.handle('add-weekly-goal', (_event, weekStart: string, text: string) => addWeeklyGoal(weekStart, text))
+ipcMain.handle('update-weekly-goal', (_event, id: number, completed: number) => updateWeeklyGoal(id, completed))
+ipcMain.handle('delete-weekly-goal', (_event, id: number) => deleteWeeklyGoal(id))
+
+// Archive
+ipcMain.handle('get-archive-day-data', (_event, date: string) => getArchiveDayData(date))
+ipcMain.handle('get-archive-month-data', (_event, year: number, month: number) => getArchiveMonthData(year, month))
+
+// ---------------------------------------------------------------------------
+// App lifecycle
+// ---------------------------------------------------------------------------
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
